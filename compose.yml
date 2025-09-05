@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: book-bazaar
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=${DOCKER_COMPOSE_POSTGRES_USERNAME}
+      - POSTGRES_PASSWORD=${DOCKER_COMPOSE_POSTGRES_PASSWORD}
+      - POSTGRES_DB=${DOCKER_COMPOSE_POSTGRES_DB}
+
+    volumes:
+      - book_bazaar_psql_data:/var/lib/postgresql/data
+
+volumes:
+  book_bazaar_psql_data:
