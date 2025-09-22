@@ -46,10 +46,6 @@ const generatingAccessAndRefreshToken = async (
   return { accessToken, refreshToken };
 };
 
-type TPickRequestUser = Pick<User, "id" | "email" | "role" | "isEmailVerified">;
 
-export interface IRequestUser extends Request {
-  user?: TPickRequestUser;
-}
 
 export { hashedPassword, isCheckPassword, generatingAccessAndRefreshToken };

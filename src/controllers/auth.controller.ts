@@ -4,9 +4,9 @@ import prisma from "../db/db";
 import {
   generatingAccessAndRefreshToken,
   hashedPassword,
-  IRequestUser,
   isCheckPassword,
 } from "../helper/auth.helper";
+import { IRequestUser } from "../types/auth.type";
 import { env } from "../config/config";
 
 const register = asyncHandler(async (req: Request, res: Response) => {

@@ -1,12 +1,9 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Response } from "express";
 import jwt from "jsonwebtoken";
 import { ApiError } from "../utils";
 import { env } from "../config/config";
 import prisma from "../db/db";
-import { IRequestUser } from "../helper/auth.helper";
-import { User } from "../generated/prisma";
-
-type TOmitUser = Omit<User, "password" | "refreshToken">;
+import { IRequestUser } from "../types/auth.type";
 
 const authVerifyJwt = async (
   req: IRequestUser,

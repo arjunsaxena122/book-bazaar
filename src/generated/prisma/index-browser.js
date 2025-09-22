@@ -144,6 +144,29 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.BookCoverImageUrlScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  bookId: 'bookId'
+};
+
+exports.Prisma.BooksScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  book_title: 'book_title',
+  book_description: 'book_description',
+  book_price: 'book_price',
+  book_publish_date: 'book_publish_date',
+  book_language: 'book_language',
+  book_publisher: 'book_publisher',
+  book_pages: 'book_pages',
+  book_rating: 'book_rating',
+  book_category: 'book_category',
+  book_author_name: 'book_author_name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -163,9 +186,27 @@ exports.Role = exports.$Enums.Role = {
   USER: 'USER'
 };
 
+exports.Category = exports.$Enums.Category = {
+  FICTION: 'FICTION',
+  NON_FICTION: 'NON_FICTION',
+  CHILDREN: 'CHILDREN',
+  COMICS: 'COMICS',
+  POETRY: 'POETRY',
+  EDUCATIONAL: 'EDUCATIONAL',
+  REFERENCE: 'REFERENCE',
+  RELIGION: 'RELIGION',
+  SCIENCE: 'SCIENCE',
+  HISTORY: 'HISTORY',
+  ART: 'ART',
+  HEALTH: 'HEALTH',
+  BUSINESS: 'BUSINESS'
+};
+
 exports.Prisma.ModelName = {
   Avatar: 'Avatar',
-  User: 'User'
+  User: 'User',
+  BookCoverImageUrl: 'BookCoverImageUrl',
+  Books: 'Books'
 };
 
 /**

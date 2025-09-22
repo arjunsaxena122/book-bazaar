@@ -23,6 +23,16 @@ export type Avatar = $Result.DefaultSelection<Prisma.$AvatarPayload>
  * 
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+/**
+ * Model BookCoverImageUrl
+ * 
+ */
+export type BookCoverImageUrl = $Result.DefaultSelection<Prisma.$BookCoverImageUrlPayload>
+/**
+ * Model Books
+ * 
+ */
+export type Books = $Result.DefaultSelection<Prisma.$BooksPayload>
 
 /**
  * Enums
@@ -35,11 +45,34 @@ export namespace $Enums {
 
 export type Role = (typeof Role)[keyof typeof Role]
 
+
+export const Category: {
+  FICTION: 'FICTION',
+  NON_FICTION: 'NON_FICTION',
+  CHILDREN: 'CHILDREN',
+  COMICS: 'COMICS',
+  POETRY: 'POETRY',
+  EDUCATIONAL: 'EDUCATIONAL',
+  REFERENCE: 'REFERENCE',
+  RELIGION: 'RELIGION',
+  SCIENCE: 'SCIENCE',
+  HISTORY: 'HISTORY',
+  ART: 'ART',
+  HEALTH: 'HEALTH',
+  BUSINESS: 'BUSINESS'
+};
+
+export type Category = (typeof Category)[keyof typeof Category]
+
 }
 
 export type Role = $Enums.Role
 
 export const Role: typeof $Enums.Role
+
+export type Category = $Enums.Category
+
+export const Category: typeof $Enums.Category
 
 /**
  * ##  Prisma Client ʲˢ
@@ -185,6 +218,26 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.bookCoverImageUrl`: Exposes CRUD operations for the **BookCoverImageUrl** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BookCoverImageUrls
+    * const bookCoverImageUrls = await prisma.bookCoverImageUrl.findMany()
+    * ```
+    */
+  get bookCoverImageUrl(): Prisma.BookCoverImageUrlDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.books`: Exposes CRUD operations for the **Books** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Books
+    * const books = await prisma.books.findMany()
+    * ```
+    */
+  get books(): Prisma.BooksDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -626,7 +679,9 @@ export namespace Prisma {
 
   export const ModelName: {
     Avatar: 'Avatar',
-    User: 'User'
+    User: 'User',
+    BookCoverImageUrl: 'BookCoverImageUrl',
+    Books: 'Books'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -645,7 +700,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "avatar" | "user"
+      modelProps: "avatar" | "user" | "bookCoverImageUrl" | "books"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -797,6 +852,154 @@ export namespace Prisma {
           }
         }
       }
+      BookCoverImageUrl: {
+        payload: Prisma.$BookCoverImageUrlPayload<ExtArgs>
+        fields: Prisma.BookCoverImageUrlFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BookCoverImageUrlFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookCoverImageUrlPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BookCoverImageUrlFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookCoverImageUrlPayload>
+          }
+          findFirst: {
+            args: Prisma.BookCoverImageUrlFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookCoverImageUrlPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BookCoverImageUrlFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookCoverImageUrlPayload>
+          }
+          findMany: {
+            args: Prisma.BookCoverImageUrlFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookCoverImageUrlPayload>[]
+          }
+          create: {
+            args: Prisma.BookCoverImageUrlCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookCoverImageUrlPayload>
+          }
+          createMany: {
+            args: Prisma.BookCoverImageUrlCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BookCoverImageUrlCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookCoverImageUrlPayload>[]
+          }
+          delete: {
+            args: Prisma.BookCoverImageUrlDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookCoverImageUrlPayload>
+          }
+          update: {
+            args: Prisma.BookCoverImageUrlUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookCoverImageUrlPayload>
+          }
+          deleteMany: {
+            args: Prisma.BookCoverImageUrlDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BookCoverImageUrlUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BookCoverImageUrlUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookCoverImageUrlPayload>[]
+          }
+          upsert: {
+            args: Prisma.BookCoverImageUrlUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BookCoverImageUrlPayload>
+          }
+          aggregate: {
+            args: Prisma.BookCoverImageUrlAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBookCoverImageUrl>
+          }
+          groupBy: {
+            args: Prisma.BookCoverImageUrlGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BookCoverImageUrlGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BookCoverImageUrlCountArgs<ExtArgs>
+            result: $Utils.Optional<BookCoverImageUrlCountAggregateOutputType> | number
+          }
+        }
+      }
+      Books: {
+        payload: Prisma.$BooksPayload<ExtArgs>
+        fields: Prisma.BooksFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BooksFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BooksPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BooksFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BooksPayload>
+          }
+          findFirst: {
+            args: Prisma.BooksFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BooksPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BooksFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BooksPayload>
+          }
+          findMany: {
+            args: Prisma.BooksFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BooksPayload>[]
+          }
+          create: {
+            args: Prisma.BooksCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BooksPayload>
+          }
+          createMany: {
+            args: Prisma.BooksCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BooksCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BooksPayload>[]
+          }
+          delete: {
+            args: Prisma.BooksDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BooksPayload>
+          }
+          update: {
+            args: Prisma.BooksUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BooksPayload>
+          }
+          deleteMany: {
+            args: Prisma.BooksDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BooksUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BooksUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BooksPayload>[]
+          }
+          upsert: {
+            args: Prisma.BooksUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BooksPayload>
+          }
+          aggregate: {
+            args: Prisma.BooksAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBooks>
+          }
+          groupBy: {
+            args: Prisma.BooksGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BooksGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BooksCountArgs<ExtArgs>
+            result: $Utils.Optional<BooksCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -883,6 +1086,8 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     avatar?: AvatarOmit
     user?: UserOmit
+    bookCoverImageUrl?: BookCoverImageUrlOmit
+    books?: BooksOmit
   }
 
   /* Types for Logging */
@@ -971,6 +1176,36 @@ export namespace Prisma {
    * Count Types
    */
 
+
+  /**
+   * Count Type UserCountOutputType
+   */
+
+  export type UserCountOutputType = {
+    books: number
+  }
+
+  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    books?: boolean | UserCountOutputTypeCountBooksArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCountOutputType
+     */
+    select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountBooksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BooksWhereInput
+  }
 
 
   /**
@@ -2259,6 +2494,8 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     avatar?: boolean | User$avatarArgs<ExtArgs>
+    books?: boolean | User$booksArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2315,6 +2552,8 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "fullName" | "email" | "password" | "isEmailVerified" | "role" | "emailVerificationToken" | "resendEmailVerificationUrl" | "forgetVerificationToken" | "resendForgetVerificationUrl" | "refreshToken" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     avatar?: boolean | User$avatarArgs<ExtArgs>
+    books?: boolean | User$booksArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
   export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2323,6 +2562,7 @@ export namespace Prisma {
     name: "User"
     objects: {
       avatar: Prisma.$AvatarPayload<ExtArgs> | null
+      books: Prisma.$BooksPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2734,6 +2974,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     avatar<T extends User$avatarArgs<ExtArgs> = {}>(args?: Subset<T, User$avatarArgs<ExtArgs>>): Prisma__AvatarClient<$Result.GetResult<Prisma.$AvatarPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    books<T extends User$booksArgs<ExtArgs> = {}>(args?: Subset<T, User$booksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BooksPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3184,6 +3425,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.books
+   */
+  export type User$booksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Books
+     */
+    select?: BooksSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Books
+     */
+    omit?: BooksOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BooksInclude<ExtArgs> | null
+    where?: BooksWhereInput
+    orderBy?: BooksOrderByWithRelationInput | BooksOrderByWithRelationInput[]
+    cursor?: BooksWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BooksScalarFieldEnum | BooksScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3199,6 +3464,2274 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: UserInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model BookCoverImageUrl
+   */
+
+  export type AggregateBookCoverImageUrl = {
+    _count: BookCoverImageUrlCountAggregateOutputType | null
+    _min: BookCoverImageUrlMinAggregateOutputType | null
+    _max: BookCoverImageUrlMaxAggregateOutputType | null
+  }
+
+  export type BookCoverImageUrlMinAggregateOutputType = {
+    id: string | null
+    url: string | null
+    bookId: string | null
+  }
+
+  export type BookCoverImageUrlMaxAggregateOutputType = {
+    id: string | null
+    url: string | null
+    bookId: string | null
+  }
+
+  export type BookCoverImageUrlCountAggregateOutputType = {
+    id: number
+    url: number
+    bookId: number
+    _all: number
+  }
+
+
+  export type BookCoverImageUrlMinAggregateInputType = {
+    id?: true
+    url?: true
+    bookId?: true
+  }
+
+  export type BookCoverImageUrlMaxAggregateInputType = {
+    id?: true
+    url?: true
+    bookId?: true
+  }
+
+  export type BookCoverImageUrlCountAggregateInputType = {
+    id?: true
+    url?: true
+    bookId?: true
+    _all?: true
+  }
+
+  export type BookCoverImageUrlAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BookCoverImageUrl to aggregate.
+     */
+    where?: BookCoverImageUrlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BookCoverImageUrls to fetch.
+     */
+    orderBy?: BookCoverImageUrlOrderByWithRelationInput | BookCoverImageUrlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BookCoverImageUrlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BookCoverImageUrls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BookCoverImageUrls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BookCoverImageUrls
+    **/
+    _count?: true | BookCoverImageUrlCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BookCoverImageUrlMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BookCoverImageUrlMaxAggregateInputType
+  }
+
+  export type GetBookCoverImageUrlAggregateType<T extends BookCoverImageUrlAggregateArgs> = {
+        [P in keyof T & keyof AggregateBookCoverImageUrl]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBookCoverImageUrl[P]>
+      : GetScalarType<T[P], AggregateBookCoverImageUrl[P]>
+  }
+
+
+
+
+  export type BookCoverImageUrlGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BookCoverImageUrlWhereInput
+    orderBy?: BookCoverImageUrlOrderByWithAggregationInput | BookCoverImageUrlOrderByWithAggregationInput[]
+    by: BookCoverImageUrlScalarFieldEnum[] | BookCoverImageUrlScalarFieldEnum
+    having?: BookCoverImageUrlScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BookCoverImageUrlCountAggregateInputType | true
+    _min?: BookCoverImageUrlMinAggregateInputType
+    _max?: BookCoverImageUrlMaxAggregateInputType
+  }
+
+  export type BookCoverImageUrlGroupByOutputType = {
+    id: string
+    url: string
+    bookId: string
+    _count: BookCoverImageUrlCountAggregateOutputType | null
+    _min: BookCoverImageUrlMinAggregateOutputType | null
+    _max: BookCoverImageUrlMaxAggregateOutputType | null
+  }
+
+  type GetBookCoverImageUrlGroupByPayload<T extends BookCoverImageUrlGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BookCoverImageUrlGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BookCoverImageUrlGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BookCoverImageUrlGroupByOutputType[P]>
+            : GetScalarType<T[P], BookCoverImageUrlGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BookCoverImageUrlSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    bookId?: boolean
+    book?: boolean | BooksDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["bookCoverImageUrl"]>
+
+  export type BookCoverImageUrlSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    bookId?: boolean
+    book?: boolean | BooksDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["bookCoverImageUrl"]>
+
+  export type BookCoverImageUrlSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    bookId?: boolean
+    book?: boolean | BooksDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["bookCoverImageUrl"]>
+
+  export type BookCoverImageUrlSelectScalar = {
+    id?: boolean
+    url?: boolean
+    bookId?: boolean
+  }
+
+  export type BookCoverImageUrlOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url" | "bookId", ExtArgs["result"]["bookCoverImageUrl"]>
+  export type BookCoverImageUrlInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    book?: boolean | BooksDefaultArgs<ExtArgs>
+  }
+  export type BookCoverImageUrlIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    book?: boolean | BooksDefaultArgs<ExtArgs>
+  }
+  export type BookCoverImageUrlIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    book?: boolean | BooksDefaultArgs<ExtArgs>
+  }
+
+  export type $BookCoverImageUrlPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BookCoverImageUrl"
+    objects: {
+      book: Prisma.$BooksPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      url: string
+      bookId: string
+    }, ExtArgs["result"]["bookCoverImageUrl"]>
+    composites: {}
+  }
+
+  type BookCoverImageUrlGetPayload<S extends boolean | null | undefined | BookCoverImageUrlDefaultArgs> = $Result.GetResult<Prisma.$BookCoverImageUrlPayload, S>
+
+  type BookCoverImageUrlCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BookCoverImageUrlFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BookCoverImageUrlCountAggregateInputType | true
+    }
+
+  export interface BookCoverImageUrlDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BookCoverImageUrl'], meta: { name: 'BookCoverImageUrl' } }
+    /**
+     * Find zero or one BookCoverImageUrl that matches the filter.
+     * @param {BookCoverImageUrlFindUniqueArgs} args - Arguments to find a BookCoverImageUrl
+     * @example
+     * // Get one BookCoverImageUrl
+     * const bookCoverImageUrl = await prisma.bookCoverImageUrl.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BookCoverImageUrlFindUniqueArgs>(args: SelectSubset<T, BookCoverImageUrlFindUniqueArgs<ExtArgs>>): Prisma__BookCoverImageUrlClient<$Result.GetResult<Prisma.$BookCoverImageUrlPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BookCoverImageUrl that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BookCoverImageUrlFindUniqueOrThrowArgs} args - Arguments to find a BookCoverImageUrl
+     * @example
+     * // Get one BookCoverImageUrl
+     * const bookCoverImageUrl = await prisma.bookCoverImageUrl.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BookCoverImageUrlFindUniqueOrThrowArgs>(args: SelectSubset<T, BookCoverImageUrlFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BookCoverImageUrlClient<$Result.GetResult<Prisma.$BookCoverImageUrlPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BookCoverImageUrl that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookCoverImageUrlFindFirstArgs} args - Arguments to find a BookCoverImageUrl
+     * @example
+     * // Get one BookCoverImageUrl
+     * const bookCoverImageUrl = await prisma.bookCoverImageUrl.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BookCoverImageUrlFindFirstArgs>(args?: SelectSubset<T, BookCoverImageUrlFindFirstArgs<ExtArgs>>): Prisma__BookCoverImageUrlClient<$Result.GetResult<Prisma.$BookCoverImageUrlPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BookCoverImageUrl that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookCoverImageUrlFindFirstOrThrowArgs} args - Arguments to find a BookCoverImageUrl
+     * @example
+     * // Get one BookCoverImageUrl
+     * const bookCoverImageUrl = await prisma.bookCoverImageUrl.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BookCoverImageUrlFindFirstOrThrowArgs>(args?: SelectSubset<T, BookCoverImageUrlFindFirstOrThrowArgs<ExtArgs>>): Prisma__BookCoverImageUrlClient<$Result.GetResult<Prisma.$BookCoverImageUrlPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BookCoverImageUrls that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookCoverImageUrlFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BookCoverImageUrls
+     * const bookCoverImageUrls = await prisma.bookCoverImageUrl.findMany()
+     * 
+     * // Get first 10 BookCoverImageUrls
+     * const bookCoverImageUrls = await prisma.bookCoverImageUrl.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const bookCoverImageUrlWithIdOnly = await prisma.bookCoverImageUrl.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BookCoverImageUrlFindManyArgs>(args?: SelectSubset<T, BookCoverImageUrlFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookCoverImageUrlPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BookCoverImageUrl.
+     * @param {BookCoverImageUrlCreateArgs} args - Arguments to create a BookCoverImageUrl.
+     * @example
+     * // Create one BookCoverImageUrl
+     * const BookCoverImageUrl = await prisma.bookCoverImageUrl.create({
+     *   data: {
+     *     // ... data to create a BookCoverImageUrl
+     *   }
+     * })
+     * 
+     */
+    create<T extends BookCoverImageUrlCreateArgs>(args: SelectSubset<T, BookCoverImageUrlCreateArgs<ExtArgs>>): Prisma__BookCoverImageUrlClient<$Result.GetResult<Prisma.$BookCoverImageUrlPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BookCoverImageUrls.
+     * @param {BookCoverImageUrlCreateManyArgs} args - Arguments to create many BookCoverImageUrls.
+     * @example
+     * // Create many BookCoverImageUrls
+     * const bookCoverImageUrl = await prisma.bookCoverImageUrl.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BookCoverImageUrlCreateManyArgs>(args?: SelectSubset<T, BookCoverImageUrlCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BookCoverImageUrls and returns the data saved in the database.
+     * @param {BookCoverImageUrlCreateManyAndReturnArgs} args - Arguments to create many BookCoverImageUrls.
+     * @example
+     * // Create many BookCoverImageUrls
+     * const bookCoverImageUrl = await prisma.bookCoverImageUrl.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BookCoverImageUrls and only return the `id`
+     * const bookCoverImageUrlWithIdOnly = await prisma.bookCoverImageUrl.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BookCoverImageUrlCreateManyAndReturnArgs>(args?: SelectSubset<T, BookCoverImageUrlCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookCoverImageUrlPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a BookCoverImageUrl.
+     * @param {BookCoverImageUrlDeleteArgs} args - Arguments to delete one BookCoverImageUrl.
+     * @example
+     * // Delete one BookCoverImageUrl
+     * const BookCoverImageUrl = await prisma.bookCoverImageUrl.delete({
+     *   where: {
+     *     // ... filter to delete one BookCoverImageUrl
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BookCoverImageUrlDeleteArgs>(args: SelectSubset<T, BookCoverImageUrlDeleteArgs<ExtArgs>>): Prisma__BookCoverImageUrlClient<$Result.GetResult<Prisma.$BookCoverImageUrlPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BookCoverImageUrl.
+     * @param {BookCoverImageUrlUpdateArgs} args - Arguments to update one BookCoverImageUrl.
+     * @example
+     * // Update one BookCoverImageUrl
+     * const bookCoverImageUrl = await prisma.bookCoverImageUrl.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BookCoverImageUrlUpdateArgs>(args: SelectSubset<T, BookCoverImageUrlUpdateArgs<ExtArgs>>): Prisma__BookCoverImageUrlClient<$Result.GetResult<Prisma.$BookCoverImageUrlPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BookCoverImageUrls.
+     * @param {BookCoverImageUrlDeleteManyArgs} args - Arguments to filter BookCoverImageUrls to delete.
+     * @example
+     * // Delete a few BookCoverImageUrls
+     * const { count } = await prisma.bookCoverImageUrl.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BookCoverImageUrlDeleteManyArgs>(args?: SelectSubset<T, BookCoverImageUrlDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BookCoverImageUrls.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookCoverImageUrlUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BookCoverImageUrls
+     * const bookCoverImageUrl = await prisma.bookCoverImageUrl.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BookCoverImageUrlUpdateManyArgs>(args: SelectSubset<T, BookCoverImageUrlUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BookCoverImageUrls and returns the data updated in the database.
+     * @param {BookCoverImageUrlUpdateManyAndReturnArgs} args - Arguments to update many BookCoverImageUrls.
+     * @example
+     * // Update many BookCoverImageUrls
+     * const bookCoverImageUrl = await prisma.bookCoverImageUrl.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more BookCoverImageUrls and only return the `id`
+     * const bookCoverImageUrlWithIdOnly = await prisma.bookCoverImageUrl.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BookCoverImageUrlUpdateManyAndReturnArgs>(args: SelectSubset<T, BookCoverImageUrlUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookCoverImageUrlPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one BookCoverImageUrl.
+     * @param {BookCoverImageUrlUpsertArgs} args - Arguments to update or create a BookCoverImageUrl.
+     * @example
+     * // Update or create a BookCoverImageUrl
+     * const bookCoverImageUrl = await prisma.bookCoverImageUrl.upsert({
+     *   create: {
+     *     // ... data to create a BookCoverImageUrl
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BookCoverImageUrl we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BookCoverImageUrlUpsertArgs>(args: SelectSubset<T, BookCoverImageUrlUpsertArgs<ExtArgs>>): Prisma__BookCoverImageUrlClient<$Result.GetResult<Prisma.$BookCoverImageUrlPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of BookCoverImageUrls.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookCoverImageUrlCountArgs} args - Arguments to filter BookCoverImageUrls to count.
+     * @example
+     * // Count the number of BookCoverImageUrls
+     * const count = await prisma.bookCoverImageUrl.count({
+     *   where: {
+     *     // ... the filter for the BookCoverImageUrls we want to count
+     *   }
+     * })
+    **/
+    count<T extends BookCoverImageUrlCountArgs>(
+      args?: Subset<T, BookCoverImageUrlCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BookCoverImageUrlCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BookCoverImageUrl.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookCoverImageUrlAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BookCoverImageUrlAggregateArgs>(args: Subset<T, BookCoverImageUrlAggregateArgs>): Prisma.PrismaPromise<GetBookCoverImageUrlAggregateType<T>>
+
+    /**
+     * Group by BookCoverImageUrl.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BookCoverImageUrlGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BookCoverImageUrlGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BookCoverImageUrlGroupByArgs['orderBy'] }
+        : { orderBy?: BookCoverImageUrlGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BookCoverImageUrlGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBookCoverImageUrlGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BookCoverImageUrl model
+   */
+  readonly fields: BookCoverImageUrlFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BookCoverImageUrl.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BookCoverImageUrlClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    book<T extends BooksDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BooksDefaultArgs<ExtArgs>>): Prisma__BooksClient<$Result.GetResult<Prisma.$BooksPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BookCoverImageUrl model
+   */
+  interface BookCoverImageUrlFieldRefs {
+    readonly id: FieldRef<"BookCoverImageUrl", 'String'>
+    readonly url: FieldRef<"BookCoverImageUrl", 'String'>
+    readonly bookId: FieldRef<"BookCoverImageUrl", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BookCoverImageUrl findUnique
+   */
+  export type BookCoverImageUrlFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookCoverImageUrl
+     */
+    select?: BookCoverImageUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookCoverImageUrl
+     */
+    omit?: BookCoverImageUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookCoverImageUrlInclude<ExtArgs> | null
+    /**
+     * Filter, which BookCoverImageUrl to fetch.
+     */
+    where: BookCoverImageUrlWhereUniqueInput
+  }
+
+  /**
+   * BookCoverImageUrl findUniqueOrThrow
+   */
+  export type BookCoverImageUrlFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookCoverImageUrl
+     */
+    select?: BookCoverImageUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookCoverImageUrl
+     */
+    omit?: BookCoverImageUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookCoverImageUrlInclude<ExtArgs> | null
+    /**
+     * Filter, which BookCoverImageUrl to fetch.
+     */
+    where: BookCoverImageUrlWhereUniqueInput
+  }
+
+  /**
+   * BookCoverImageUrl findFirst
+   */
+  export type BookCoverImageUrlFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookCoverImageUrl
+     */
+    select?: BookCoverImageUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookCoverImageUrl
+     */
+    omit?: BookCoverImageUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookCoverImageUrlInclude<ExtArgs> | null
+    /**
+     * Filter, which BookCoverImageUrl to fetch.
+     */
+    where?: BookCoverImageUrlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BookCoverImageUrls to fetch.
+     */
+    orderBy?: BookCoverImageUrlOrderByWithRelationInput | BookCoverImageUrlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BookCoverImageUrls.
+     */
+    cursor?: BookCoverImageUrlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BookCoverImageUrls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BookCoverImageUrls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BookCoverImageUrls.
+     */
+    distinct?: BookCoverImageUrlScalarFieldEnum | BookCoverImageUrlScalarFieldEnum[]
+  }
+
+  /**
+   * BookCoverImageUrl findFirstOrThrow
+   */
+  export type BookCoverImageUrlFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookCoverImageUrl
+     */
+    select?: BookCoverImageUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookCoverImageUrl
+     */
+    omit?: BookCoverImageUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookCoverImageUrlInclude<ExtArgs> | null
+    /**
+     * Filter, which BookCoverImageUrl to fetch.
+     */
+    where?: BookCoverImageUrlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BookCoverImageUrls to fetch.
+     */
+    orderBy?: BookCoverImageUrlOrderByWithRelationInput | BookCoverImageUrlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BookCoverImageUrls.
+     */
+    cursor?: BookCoverImageUrlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BookCoverImageUrls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BookCoverImageUrls.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BookCoverImageUrls.
+     */
+    distinct?: BookCoverImageUrlScalarFieldEnum | BookCoverImageUrlScalarFieldEnum[]
+  }
+
+  /**
+   * BookCoverImageUrl findMany
+   */
+  export type BookCoverImageUrlFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookCoverImageUrl
+     */
+    select?: BookCoverImageUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookCoverImageUrl
+     */
+    omit?: BookCoverImageUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookCoverImageUrlInclude<ExtArgs> | null
+    /**
+     * Filter, which BookCoverImageUrls to fetch.
+     */
+    where?: BookCoverImageUrlWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BookCoverImageUrls to fetch.
+     */
+    orderBy?: BookCoverImageUrlOrderByWithRelationInput | BookCoverImageUrlOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BookCoverImageUrls.
+     */
+    cursor?: BookCoverImageUrlWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BookCoverImageUrls from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BookCoverImageUrls.
+     */
+    skip?: number
+    distinct?: BookCoverImageUrlScalarFieldEnum | BookCoverImageUrlScalarFieldEnum[]
+  }
+
+  /**
+   * BookCoverImageUrl create
+   */
+  export type BookCoverImageUrlCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookCoverImageUrl
+     */
+    select?: BookCoverImageUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookCoverImageUrl
+     */
+    omit?: BookCoverImageUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookCoverImageUrlInclude<ExtArgs> | null
+    /**
+     * The data needed to create a BookCoverImageUrl.
+     */
+    data: XOR<BookCoverImageUrlCreateInput, BookCoverImageUrlUncheckedCreateInput>
+  }
+
+  /**
+   * BookCoverImageUrl createMany
+   */
+  export type BookCoverImageUrlCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BookCoverImageUrls.
+     */
+    data: BookCoverImageUrlCreateManyInput | BookCoverImageUrlCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BookCoverImageUrl createManyAndReturn
+   */
+  export type BookCoverImageUrlCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookCoverImageUrl
+     */
+    select?: BookCoverImageUrlSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookCoverImageUrl
+     */
+    omit?: BookCoverImageUrlOmit<ExtArgs> | null
+    /**
+     * The data used to create many BookCoverImageUrls.
+     */
+    data: BookCoverImageUrlCreateManyInput | BookCoverImageUrlCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookCoverImageUrlIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BookCoverImageUrl update
+   */
+  export type BookCoverImageUrlUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookCoverImageUrl
+     */
+    select?: BookCoverImageUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookCoverImageUrl
+     */
+    omit?: BookCoverImageUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookCoverImageUrlInclude<ExtArgs> | null
+    /**
+     * The data needed to update a BookCoverImageUrl.
+     */
+    data: XOR<BookCoverImageUrlUpdateInput, BookCoverImageUrlUncheckedUpdateInput>
+    /**
+     * Choose, which BookCoverImageUrl to update.
+     */
+    where: BookCoverImageUrlWhereUniqueInput
+  }
+
+  /**
+   * BookCoverImageUrl updateMany
+   */
+  export type BookCoverImageUrlUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BookCoverImageUrls.
+     */
+    data: XOR<BookCoverImageUrlUpdateManyMutationInput, BookCoverImageUrlUncheckedUpdateManyInput>
+    /**
+     * Filter which BookCoverImageUrls to update
+     */
+    where?: BookCoverImageUrlWhereInput
+    /**
+     * Limit how many BookCoverImageUrls to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BookCoverImageUrl updateManyAndReturn
+   */
+  export type BookCoverImageUrlUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookCoverImageUrl
+     */
+    select?: BookCoverImageUrlSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookCoverImageUrl
+     */
+    omit?: BookCoverImageUrlOmit<ExtArgs> | null
+    /**
+     * The data used to update BookCoverImageUrls.
+     */
+    data: XOR<BookCoverImageUrlUpdateManyMutationInput, BookCoverImageUrlUncheckedUpdateManyInput>
+    /**
+     * Filter which BookCoverImageUrls to update
+     */
+    where?: BookCoverImageUrlWhereInput
+    /**
+     * Limit how many BookCoverImageUrls to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookCoverImageUrlIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BookCoverImageUrl upsert
+   */
+  export type BookCoverImageUrlUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookCoverImageUrl
+     */
+    select?: BookCoverImageUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookCoverImageUrl
+     */
+    omit?: BookCoverImageUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookCoverImageUrlInclude<ExtArgs> | null
+    /**
+     * The filter to search for the BookCoverImageUrl to update in case it exists.
+     */
+    where: BookCoverImageUrlWhereUniqueInput
+    /**
+     * In case the BookCoverImageUrl found by the `where` argument doesn't exist, create a new BookCoverImageUrl with this data.
+     */
+    create: XOR<BookCoverImageUrlCreateInput, BookCoverImageUrlUncheckedCreateInput>
+    /**
+     * In case the BookCoverImageUrl was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BookCoverImageUrlUpdateInput, BookCoverImageUrlUncheckedUpdateInput>
+  }
+
+  /**
+   * BookCoverImageUrl delete
+   */
+  export type BookCoverImageUrlDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookCoverImageUrl
+     */
+    select?: BookCoverImageUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookCoverImageUrl
+     */
+    omit?: BookCoverImageUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookCoverImageUrlInclude<ExtArgs> | null
+    /**
+     * Filter which BookCoverImageUrl to delete.
+     */
+    where: BookCoverImageUrlWhereUniqueInput
+  }
+
+  /**
+   * BookCoverImageUrl deleteMany
+   */
+  export type BookCoverImageUrlDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BookCoverImageUrls to delete
+     */
+    where?: BookCoverImageUrlWhereInput
+    /**
+     * Limit how many BookCoverImageUrls to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * BookCoverImageUrl without action
+   */
+  export type BookCoverImageUrlDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookCoverImageUrl
+     */
+    select?: BookCoverImageUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookCoverImageUrl
+     */
+    omit?: BookCoverImageUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookCoverImageUrlInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Books
+   */
+
+  export type AggregateBooks = {
+    _count: BooksCountAggregateOutputType | null
+    _avg: BooksAvgAggregateOutputType | null
+    _sum: BooksSumAggregateOutputType | null
+    _min: BooksMinAggregateOutputType | null
+    _max: BooksMaxAggregateOutputType | null
+  }
+
+  export type BooksAvgAggregateOutputType = {
+    book_price: Decimal | null
+    book_rating: number | null
+  }
+
+  export type BooksSumAggregateOutputType = {
+    book_price: Decimal | null
+    book_rating: number | null
+  }
+
+  export type BooksMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    book_title: string | null
+    book_description: string | null
+    book_price: Decimal | null
+    book_publish_date: Date | null
+    book_language: string | null
+    book_publisher: string | null
+    book_pages: string | null
+    book_rating: number | null
+    book_category: $Enums.Category | null
+    book_author_name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BooksMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    book_title: string | null
+    book_description: string | null
+    book_price: Decimal | null
+    book_publish_date: Date | null
+    book_language: string | null
+    book_publisher: string | null
+    book_pages: string | null
+    book_rating: number | null
+    book_category: $Enums.Category | null
+    book_author_name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BooksCountAggregateOutputType = {
+    id: number
+    userId: number
+    book_title: number
+    book_description: number
+    book_price: number
+    book_publish_date: number
+    book_language: number
+    book_publisher: number
+    book_pages: number
+    book_rating: number
+    book_category: number
+    book_author_name: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type BooksAvgAggregateInputType = {
+    book_price?: true
+    book_rating?: true
+  }
+
+  export type BooksSumAggregateInputType = {
+    book_price?: true
+    book_rating?: true
+  }
+
+  export type BooksMinAggregateInputType = {
+    id?: true
+    userId?: true
+    book_title?: true
+    book_description?: true
+    book_price?: true
+    book_publish_date?: true
+    book_language?: true
+    book_publisher?: true
+    book_pages?: true
+    book_rating?: true
+    book_category?: true
+    book_author_name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BooksMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    book_title?: true
+    book_description?: true
+    book_price?: true
+    book_publish_date?: true
+    book_language?: true
+    book_publisher?: true
+    book_pages?: true
+    book_rating?: true
+    book_category?: true
+    book_author_name?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BooksCountAggregateInputType = {
+    id?: true
+    userId?: true
+    book_title?: true
+    book_description?: true
+    book_price?: true
+    book_publish_date?: true
+    book_language?: true
+    book_publisher?: true
+    book_pages?: true
+    book_rating?: true
+    book_category?: true
+    book_author_name?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type BooksAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Books to aggregate.
+     */
+    where?: BooksWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Books to fetch.
+     */
+    orderBy?: BooksOrderByWithRelationInput | BooksOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BooksWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Books from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Books.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Books
+    **/
+    _count?: true | BooksCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BooksAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BooksSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BooksMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BooksMaxAggregateInputType
+  }
+
+  export type GetBooksAggregateType<T extends BooksAggregateArgs> = {
+        [P in keyof T & keyof AggregateBooks]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBooks[P]>
+      : GetScalarType<T[P], AggregateBooks[P]>
+  }
+
+
+
+
+  export type BooksGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BooksWhereInput
+    orderBy?: BooksOrderByWithAggregationInput | BooksOrderByWithAggregationInput[]
+    by: BooksScalarFieldEnum[] | BooksScalarFieldEnum
+    having?: BooksScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BooksCountAggregateInputType | true
+    _avg?: BooksAvgAggregateInputType
+    _sum?: BooksSumAggregateInputType
+    _min?: BooksMinAggregateInputType
+    _max?: BooksMaxAggregateInputType
+  }
+
+  export type BooksGroupByOutputType = {
+    id: string
+    userId: string
+    book_title: string
+    book_description: string
+    book_price: Decimal
+    book_publish_date: Date
+    book_language: string
+    book_publisher: string | null
+    book_pages: string | null
+    book_rating: number | null
+    book_category: $Enums.Category
+    book_author_name: string
+    createdAt: Date
+    updatedAt: Date
+    _count: BooksCountAggregateOutputType | null
+    _avg: BooksAvgAggregateOutputType | null
+    _sum: BooksSumAggregateOutputType | null
+    _min: BooksMinAggregateOutputType | null
+    _max: BooksMaxAggregateOutputType | null
+  }
+
+  type GetBooksGroupByPayload<T extends BooksGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BooksGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BooksGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BooksGroupByOutputType[P]>
+            : GetScalarType<T[P], BooksGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BooksSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    book_title?: boolean
+    book_description?: boolean
+    book_price?: boolean
+    book_publish_date?: boolean
+    book_language?: boolean
+    book_publisher?: boolean
+    book_pages?: boolean
+    book_rating?: boolean
+    book_category?: boolean
+    book_author_name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    book_cover_image_url?: boolean | Books$book_cover_image_urlArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["books"]>
+
+  export type BooksSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    book_title?: boolean
+    book_description?: boolean
+    book_price?: boolean
+    book_publish_date?: boolean
+    book_language?: boolean
+    book_publisher?: boolean
+    book_pages?: boolean
+    book_rating?: boolean
+    book_category?: boolean
+    book_author_name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["books"]>
+
+  export type BooksSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    book_title?: boolean
+    book_description?: boolean
+    book_price?: boolean
+    book_publish_date?: boolean
+    book_language?: boolean
+    book_publisher?: boolean
+    book_pages?: boolean
+    book_rating?: boolean
+    book_category?: boolean
+    book_author_name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["books"]>
+
+  export type BooksSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    book_title?: boolean
+    book_description?: boolean
+    book_price?: boolean
+    book_publish_date?: boolean
+    book_language?: boolean
+    book_publisher?: boolean
+    book_pages?: boolean
+    book_rating?: boolean
+    book_category?: boolean
+    book_author_name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type BooksOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "book_title" | "book_description" | "book_price" | "book_publish_date" | "book_language" | "book_publisher" | "book_pages" | "book_rating" | "book_category" | "book_author_name" | "createdAt" | "updatedAt", ExtArgs["result"]["books"]>
+  export type BooksInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    book_cover_image_url?: boolean | Books$book_cover_image_urlArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type BooksIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type BooksIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $BooksPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Books"
+    objects: {
+      book_cover_image_url: Prisma.$BookCoverImageUrlPayload<ExtArgs> | null
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      book_title: string
+      book_description: string
+      book_price: Prisma.Decimal
+      book_publish_date: Date
+      book_language: string
+      book_publisher: string | null
+      book_pages: string | null
+      book_rating: number | null
+      book_category: $Enums.Category
+      book_author_name: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["books"]>
+    composites: {}
+  }
+
+  type BooksGetPayload<S extends boolean | null | undefined | BooksDefaultArgs> = $Result.GetResult<Prisma.$BooksPayload, S>
+
+  type BooksCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BooksFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BooksCountAggregateInputType | true
+    }
+
+  export interface BooksDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Books'], meta: { name: 'Books' } }
+    /**
+     * Find zero or one Books that matches the filter.
+     * @param {BooksFindUniqueArgs} args - Arguments to find a Books
+     * @example
+     * // Get one Books
+     * const books = await prisma.books.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BooksFindUniqueArgs>(args: SelectSubset<T, BooksFindUniqueArgs<ExtArgs>>): Prisma__BooksClient<$Result.GetResult<Prisma.$BooksPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Books that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BooksFindUniqueOrThrowArgs} args - Arguments to find a Books
+     * @example
+     * // Get one Books
+     * const books = await prisma.books.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BooksFindUniqueOrThrowArgs>(args: SelectSubset<T, BooksFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BooksClient<$Result.GetResult<Prisma.$BooksPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Books that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BooksFindFirstArgs} args - Arguments to find a Books
+     * @example
+     * // Get one Books
+     * const books = await prisma.books.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BooksFindFirstArgs>(args?: SelectSubset<T, BooksFindFirstArgs<ExtArgs>>): Prisma__BooksClient<$Result.GetResult<Prisma.$BooksPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Books that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BooksFindFirstOrThrowArgs} args - Arguments to find a Books
+     * @example
+     * // Get one Books
+     * const books = await prisma.books.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BooksFindFirstOrThrowArgs>(args?: SelectSubset<T, BooksFindFirstOrThrowArgs<ExtArgs>>): Prisma__BooksClient<$Result.GetResult<Prisma.$BooksPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Books that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BooksFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Books
+     * const books = await prisma.books.findMany()
+     * 
+     * // Get first 10 Books
+     * const books = await prisma.books.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const booksWithIdOnly = await prisma.books.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BooksFindManyArgs>(args?: SelectSubset<T, BooksFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BooksPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Books.
+     * @param {BooksCreateArgs} args - Arguments to create a Books.
+     * @example
+     * // Create one Books
+     * const Books = await prisma.books.create({
+     *   data: {
+     *     // ... data to create a Books
+     *   }
+     * })
+     * 
+     */
+    create<T extends BooksCreateArgs>(args: SelectSubset<T, BooksCreateArgs<ExtArgs>>): Prisma__BooksClient<$Result.GetResult<Prisma.$BooksPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Books.
+     * @param {BooksCreateManyArgs} args - Arguments to create many Books.
+     * @example
+     * // Create many Books
+     * const books = await prisma.books.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BooksCreateManyArgs>(args?: SelectSubset<T, BooksCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Books and returns the data saved in the database.
+     * @param {BooksCreateManyAndReturnArgs} args - Arguments to create many Books.
+     * @example
+     * // Create many Books
+     * const books = await prisma.books.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Books and only return the `id`
+     * const booksWithIdOnly = await prisma.books.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BooksCreateManyAndReturnArgs>(args?: SelectSubset<T, BooksCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BooksPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Books.
+     * @param {BooksDeleteArgs} args - Arguments to delete one Books.
+     * @example
+     * // Delete one Books
+     * const Books = await prisma.books.delete({
+     *   where: {
+     *     // ... filter to delete one Books
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BooksDeleteArgs>(args: SelectSubset<T, BooksDeleteArgs<ExtArgs>>): Prisma__BooksClient<$Result.GetResult<Prisma.$BooksPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Books.
+     * @param {BooksUpdateArgs} args - Arguments to update one Books.
+     * @example
+     * // Update one Books
+     * const books = await prisma.books.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BooksUpdateArgs>(args: SelectSubset<T, BooksUpdateArgs<ExtArgs>>): Prisma__BooksClient<$Result.GetResult<Prisma.$BooksPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Books.
+     * @param {BooksDeleteManyArgs} args - Arguments to filter Books to delete.
+     * @example
+     * // Delete a few Books
+     * const { count } = await prisma.books.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BooksDeleteManyArgs>(args?: SelectSubset<T, BooksDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Books.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BooksUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Books
+     * const books = await prisma.books.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BooksUpdateManyArgs>(args: SelectSubset<T, BooksUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Books and returns the data updated in the database.
+     * @param {BooksUpdateManyAndReturnArgs} args - Arguments to update many Books.
+     * @example
+     * // Update many Books
+     * const books = await prisma.books.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Books and only return the `id`
+     * const booksWithIdOnly = await prisma.books.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BooksUpdateManyAndReturnArgs>(args: SelectSubset<T, BooksUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BooksPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Books.
+     * @param {BooksUpsertArgs} args - Arguments to update or create a Books.
+     * @example
+     * // Update or create a Books
+     * const books = await prisma.books.upsert({
+     *   create: {
+     *     // ... data to create a Books
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Books we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BooksUpsertArgs>(args: SelectSubset<T, BooksUpsertArgs<ExtArgs>>): Prisma__BooksClient<$Result.GetResult<Prisma.$BooksPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Books.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BooksCountArgs} args - Arguments to filter Books to count.
+     * @example
+     * // Count the number of Books
+     * const count = await prisma.books.count({
+     *   where: {
+     *     // ... the filter for the Books we want to count
+     *   }
+     * })
+    **/
+    count<T extends BooksCountArgs>(
+      args?: Subset<T, BooksCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BooksCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Books.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BooksAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BooksAggregateArgs>(args: Subset<T, BooksAggregateArgs>): Prisma.PrismaPromise<GetBooksAggregateType<T>>
+
+    /**
+     * Group by Books.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BooksGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BooksGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BooksGroupByArgs['orderBy'] }
+        : { orderBy?: BooksGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BooksGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBooksGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Books model
+   */
+  readonly fields: BooksFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Books.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BooksClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    book_cover_image_url<T extends Books$book_cover_image_urlArgs<ExtArgs> = {}>(args?: Subset<T, Books$book_cover_image_urlArgs<ExtArgs>>): Prisma__BookCoverImageUrlClient<$Result.GetResult<Prisma.$BookCoverImageUrlPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Books model
+   */
+  interface BooksFieldRefs {
+    readonly id: FieldRef<"Books", 'String'>
+    readonly userId: FieldRef<"Books", 'String'>
+    readonly book_title: FieldRef<"Books", 'String'>
+    readonly book_description: FieldRef<"Books", 'String'>
+    readonly book_price: FieldRef<"Books", 'Decimal'>
+    readonly book_publish_date: FieldRef<"Books", 'DateTime'>
+    readonly book_language: FieldRef<"Books", 'String'>
+    readonly book_publisher: FieldRef<"Books", 'String'>
+    readonly book_pages: FieldRef<"Books", 'String'>
+    readonly book_rating: FieldRef<"Books", 'Float'>
+    readonly book_category: FieldRef<"Books", 'Category'>
+    readonly book_author_name: FieldRef<"Books", 'String'>
+    readonly createdAt: FieldRef<"Books", 'DateTime'>
+    readonly updatedAt: FieldRef<"Books", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Books findUnique
+   */
+  export type BooksFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Books
+     */
+    select?: BooksSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Books
+     */
+    omit?: BooksOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BooksInclude<ExtArgs> | null
+    /**
+     * Filter, which Books to fetch.
+     */
+    where: BooksWhereUniqueInput
+  }
+
+  /**
+   * Books findUniqueOrThrow
+   */
+  export type BooksFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Books
+     */
+    select?: BooksSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Books
+     */
+    omit?: BooksOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BooksInclude<ExtArgs> | null
+    /**
+     * Filter, which Books to fetch.
+     */
+    where: BooksWhereUniqueInput
+  }
+
+  /**
+   * Books findFirst
+   */
+  export type BooksFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Books
+     */
+    select?: BooksSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Books
+     */
+    omit?: BooksOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BooksInclude<ExtArgs> | null
+    /**
+     * Filter, which Books to fetch.
+     */
+    where?: BooksWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Books to fetch.
+     */
+    orderBy?: BooksOrderByWithRelationInput | BooksOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Books.
+     */
+    cursor?: BooksWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Books from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Books.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Books.
+     */
+    distinct?: BooksScalarFieldEnum | BooksScalarFieldEnum[]
+  }
+
+  /**
+   * Books findFirstOrThrow
+   */
+  export type BooksFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Books
+     */
+    select?: BooksSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Books
+     */
+    omit?: BooksOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BooksInclude<ExtArgs> | null
+    /**
+     * Filter, which Books to fetch.
+     */
+    where?: BooksWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Books to fetch.
+     */
+    orderBy?: BooksOrderByWithRelationInput | BooksOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Books.
+     */
+    cursor?: BooksWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Books from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Books.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Books.
+     */
+    distinct?: BooksScalarFieldEnum | BooksScalarFieldEnum[]
+  }
+
+  /**
+   * Books findMany
+   */
+  export type BooksFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Books
+     */
+    select?: BooksSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Books
+     */
+    omit?: BooksOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BooksInclude<ExtArgs> | null
+    /**
+     * Filter, which Books to fetch.
+     */
+    where?: BooksWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Books to fetch.
+     */
+    orderBy?: BooksOrderByWithRelationInput | BooksOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Books.
+     */
+    cursor?: BooksWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Books from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Books.
+     */
+    skip?: number
+    distinct?: BooksScalarFieldEnum | BooksScalarFieldEnum[]
+  }
+
+  /**
+   * Books create
+   */
+  export type BooksCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Books
+     */
+    select?: BooksSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Books
+     */
+    omit?: BooksOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BooksInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Books.
+     */
+    data: XOR<BooksCreateInput, BooksUncheckedCreateInput>
+  }
+
+  /**
+   * Books createMany
+   */
+  export type BooksCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Books.
+     */
+    data: BooksCreateManyInput | BooksCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Books createManyAndReturn
+   */
+  export type BooksCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Books
+     */
+    select?: BooksSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Books
+     */
+    omit?: BooksOmit<ExtArgs> | null
+    /**
+     * The data used to create many Books.
+     */
+    data: BooksCreateManyInput | BooksCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BooksIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Books update
+   */
+  export type BooksUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Books
+     */
+    select?: BooksSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Books
+     */
+    omit?: BooksOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BooksInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Books.
+     */
+    data: XOR<BooksUpdateInput, BooksUncheckedUpdateInput>
+    /**
+     * Choose, which Books to update.
+     */
+    where: BooksWhereUniqueInput
+  }
+
+  /**
+   * Books updateMany
+   */
+  export type BooksUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Books.
+     */
+    data: XOR<BooksUpdateManyMutationInput, BooksUncheckedUpdateManyInput>
+    /**
+     * Filter which Books to update
+     */
+    where?: BooksWhereInput
+    /**
+     * Limit how many Books to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Books updateManyAndReturn
+   */
+  export type BooksUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Books
+     */
+    select?: BooksSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Books
+     */
+    omit?: BooksOmit<ExtArgs> | null
+    /**
+     * The data used to update Books.
+     */
+    data: XOR<BooksUpdateManyMutationInput, BooksUncheckedUpdateManyInput>
+    /**
+     * Filter which Books to update
+     */
+    where?: BooksWhereInput
+    /**
+     * Limit how many Books to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BooksIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Books upsert
+   */
+  export type BooksUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Books
+     */
+    select?: BooksSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Books
+     */
+    omit?: BooksOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BooksInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Books to update in case it exists.
+     */
+    where: BooksWhereUniqueInput
+    /**
+     * In case the Books found by the `where` argument doesn't exist, create a new Books with this data.
+     */
+    create: XOR<BooksCreateInput, BooksUncheckedCreateInput>
+    /**
+     * In case the Books was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BooksUpdateInput, BooksUncheckedUpdateInput>
+  }
+
+  /**
+   * Books delete
+   */
+  export type BooksDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Books
+     */
+    select?: BooksSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Books
+     */
+    omit?: BooksOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BooksInclude<ExtArgs> | null
+    /**
+     * Filter which Books to delete.
+     */
+    where: BooksWhereUniqueInput
+  }
+
+  /**
+   * Books deleteMany
+   */
+  export type BooksDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Books to delete
+     */
+    where?: BooksWhereInput
+    /**
+     * Limit how many Books to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Books.book_cover_image_url
+   */
+  export type Books$book_cover_image_urlArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BookCoverImageUrl
+     */
+    select?: BookCoverImageUrlSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BookCoverImageUrl
+     */
+    omit?: BookCoverImageUrlOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BookCoverImageUrlInclude<ExtArgs> | null
+    where?: BookCoverImageUrlWhereInput
+  }
+
+  /**
+   * Books without action
+   */
+  export type BooksDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Books
+     */
+    select?: BooksSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Books
+     */
+    omit?: BooksOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BooksInclude<ExtArgs> | null
   }
 
 
@@ -3244,6 +5777,35 @@ export namespace Prisma {
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const BookCoverImageUrlScalarFieldEnum: {
+    id: 'id',
+    url: 'url',
+    bookId: 'bookId'
+  };
+
+  export type BookCoverImageUrlScalarFieldEnum = (typeof BookCoverImageUrlScalarFieldEnum)[keyof typeof BookCoverImageUrlScalarFieldEnum]
+
+
+  export const BooksScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    book_title: 'book_title',
+    book_description: 'book_description',
+    book_price: 'book_price',
+    book_publish_date: 'book_publish_date',
+    book_language: 'book_language',
+    book_publisher: 'book_publisher',
+    book_pages: 'book_pages',
+    book_rating: 'book_rating',
+    book_category: 'book_category',
+    book_author_name: 'book_author_name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type BooksScalarFieldEnum = (typeof BooksScalarFieldEnum)[keyof typeof BooksScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -3321,6 +5883,48 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal'
+   */
+  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal[]'
+   */
+  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Category'
+   */
+  export type EnumCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Category'>
+    
+
+
+  /**
+   * Reference to a field of type 'Category[]'
+   */
+  export type ListEnumCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Category[]'>
     
 
 
@@ -3410,6 +6014,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     avatar?: XOR<AvatarNullableScalarRelationFilter, AvatarWhereInput> | null
+    books?: BooksListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -3428,6 +6033,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     avatar?: AvatarOrderByWithRelationInput
+    books?: BooksOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -3449,6 +6055,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     avatar?: XOR<AvatarNullableScalarRelationFilter, AvatarWhereInput> | null
+    books?: BooksListRelationFilter
   }, "id">
 
   export type UserOrderByWithAggregationInput = {
@@ -3489,6 +6096,156 @@ export namespace Prisma {
     refreshToken?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+  }
+
+  export type BookCoverImageUrlWhereInput = {
+    AND?: BookCoverImageUrlWhereInput | BookCoverImageUrlWhereInput[]
+    OR?: BookCoverImageUrlWhereInput[]
+    NOT?: BookCoverImageUrlWhereInput | BookCoverImageUrlWhereInput[]
+    id?: StringFilter<"BookCoverImageUrl"> | string
+    url?: StringFilter<"BookCoverImageUrl"> | string
+    bookId?: StringFilter<"BookCoverImageUrl"> | string
+    book?: XOR<BooksScalarRelationFilter, BooksWhereInput>
+  }
+
+  export type BookCoverImageUrlOrderByWithRelationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    bookId?: SortOrder
+    book?: BooksOrderByWithRelationInput
+  }
+
+  export type BookCoverImageUrlWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    bookId?: string
+    AND?: BookCoverImageUrlWhereInput | BookCoverImageUrlWhereInput[]
+    OR?: BookCoverImageUrlWhereInput[]
+    NOT?: BookCoverImageUrlWhereInput | BookCoverImageUrlWhereInput[]
+    url?: StringFilter<"BookCoverImageUrl"> | string
+    book?: XOR<BooksScalarRelationFilter, BooksWhereInput>
+  }, "id" | "bookId">
+
+  export type BookCoverImageUrlOrderByWithAggregationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    bookId?: SortOrder
+    _count?: BookCoverImageUrlCountOrderByAggregateInput
+    _max?: BookCoverImageUrlMaxOrderByAggregateInput
+    _min?: BookCoverImageUrlMinOrderByAggregateInput
+  }
+
+  export type BookCoverImageUrlScalarWhereWithAggregatesInput = {
+    AND?: BookCoverImageUrlScalarWhereWithAggregatesInput | BookCoverImageUrlScalarWhereWithAggregatesInput[]
+    OR?: BookCoverImageUrlScalarWhereWithAggregatesInput[]
+    NOT?: BookCoverImageUrlScalarWhereWithAggregatesInput | BookCoverImageUrlScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"BookCoverImageUrl"> | string
+    url?: StringWithAggregatesFilter<"BookCoverImageUrl"> | string
+    bookId?: StringWithAggregatesFilter<"BookCoverImageUrl"> | string
+  }
+
+  export type BooksWhereInput = {
+    AND?: BooksWhereInput | BooksWhereInput[]
+    OR?: BooksWhereInput[]
+    NOT?: BooksWhereInput | BooksWhereInput[]
+    id?: StringFilter<"Books"> | string
+    userId?: StringFilter<"Books"> | string
+    book_title?: StringFilter<"Books"> | string
+    book_description?: StringFilter<"Books"> | string
+    book_price?: DecimalFilter<"Books"> | Decimal | DecimalJsLike | number | string
+    book_publish_date?: DateTimeFilter<"Books"> | Date | string
+    book_language?: StringFilter<"Books"> | string
+    book_publisher?: StringNullableFilter<"Books"> | string | null
+    book_pages?: StringNullableFilter<"Books"> | string | null
+    book_rating?: FloatNullableFilter<"Books"> | number | null
+    book_category?: EnumCategoryFilter<"Books"> | $Enums.Category
+    book_author_name?: StringFilter<"Books"> | string
+    createdAt?: DateTimeFilter<"Books"> | Date | string
+    updatedAt?: DateTimeFilter<"Books"> | Date | string
+    book_cover_image_url?: XOR<BookCoverImageUrlNullableScalarRelationFilter, BookCoverImageUrlWhereInput> | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type BooksOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    book_title?: SortOrder
+    book_description?: SortOrder
+    book_price?: SortOrder
+    book_publish_date?: SortOrder
+    book_language?: SortOrder
+    book_publisher?: SortOrderInput | SortOrder
+    book_pages?: SortOrderInput | SortOrder
+    book_rating?: SortOrderInput | SortOrder
+    book_category?: SortOrder
+    book_author_name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    book_cover_image_url?: BookCoverImageUrlOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type BooksWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    book_title?: string
+    AND?: BooksWhereInput | BooksWhereInput[]
+    OR?: BooksWhereInput[]
+    NOT?: BooksWhereInput | BooksWhereInput[]
+    userId?: StringFilter<"Books"> | string
+    book_description?: StringFilter<"Books"> | string
+    book_price?: DecimalFilter<"Books"> | Decimal | DecimalJsLike | number | string
+    book_publish_date?: DateTimeFilter<"Books"> | Date | string
+    book_language?: StringFilter<"Books"> | string
+    book_publisher?: StringNullableFilter<"Books"> | string | null
+    book_pages?: StringNullableFilter<"Books"> | string | null
+    book_rating?: FloatNullableFilter<"Books"> | number | null
+    book_category?: EnumCategoryFilter<"Books"> | $Enums.Category
+    book_author_name?: StringFilter<"Books"> | string
+    createdAt?: DateTimeFilter<"Books"> | Date | string
+    updatedAt?: DateTimeFilter<"Books"> | Date | string
+    book_cover_image_url?: XOR<BookCoverImageUrlNullableScalarRelationFilter, BookCoverImageUrlWhereInput> | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "book_title">
+
+  export type BooksOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    book_title?: SortOrder
+    book_description?: SortOrder
+    book_price?: SortOrder
+    book_publish_date?: SortOrder
+    book_language?: SortOrder
+    book_publisher?: SortOrderInput | SortOrder
+    book_pages?: SortOrderInput | SortOrder
+    book_rating?: SortOrderInput | SortOrder
+    book_category?: SortOrder
+    book_author_name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: BooksCountOrderByAggregateInput
+    _avg?: BooksAvgOrderByAggregateInput
+    _max?: BooksMaxOrderByAggregateInput
+    _min?: BooksMinOrderByAggregateInput
+    _sum?: BooksSumOrderByAggregateInput
+  }
+
+  export type BooksScalarWhereWithAggregatesInput = {
+    AND?: BooksScalarWhereWithAggregatesInput | BooksScalarWhereWithAggregatesInput[]
+    OR?: BooksScalarWhereWithAggregatesInput[]
+    NOT?: BooksScalarWhereWithAggregatesInput | BooksScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Books"> | string
+    userId?: StringWithAggregatesFilter<"Books"> | string
+    book_title?: StringWithAggregatesFilter<"Books"> | string
+    book_description?: StringWithAggregatesFilter<"Books"> | string
+    book_price?: DecimalWithAggregatesFilter<"Books"> | Decimal | DecimalJsLike | number | string
+    book_publish_date?: DateTimeWithAggregatesFilter<"Books"> | Date | string
+    book_language?: StringWithAggregatesFilter<"Books"> | string
+    book_publisher?: StringNullableWithAggregatesFilter<"Books"> | string | null
+    book_pages?: StringNullableWithAggregatesFilter<"Books"> | string | null
+    book_rating?: FloatNullableWithAggregatesFilter<"Books"> | number | null
+    book_category?: EnumCategoryWithAggregatesFilter<"Books"> | $Enums.Category
+    book_author_name?: StringWithAggregatesFilter<"Books"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Books"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Books"> | Date | string
   }
 
   export type AvatarCreateInput = {
@@ -3555,6 +6312,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     avatar?: AvatarCreateNestedOneWithoutUserInput
+    books?: BooksCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -3573,6 +6331,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     avatar?: AvatarUncheckedCreateNestedOneWithoutUserInput
+    books?: BooksUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -3591,6 +6350,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     avatar?: AvatarUpdateOneWithoutUserNestedInput
+    books?: BooksUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -3609,6 +6369,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     avatar?: AvatarUncheckedUpdateOneWithoutUserNestedInput
+    books?: BooksUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -3658,6 +6419,169 @@ export namespace Prisma {
     forgetVerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
     resendForgetVerificationUrl?: NullableStringFieldUpdateOperationsInput | string | null
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BookCoverImageUrlCreateInput = {
+    id?: string
+    url?: string
+    book: BooksCreateNestedOneWithoutBook_cover_image_urlInput
+  }
+
+  export type BookCoverImageUrlUncheckedCreateInput = {
+    id?: string
+    url?: string
+    bookId: string
+  }
+
+  export type BookCoverImageUrlUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    book?: BooksUpdateOneRequiredWithoutBook_cover_image_urlNestedInput
+  }
+
+  export type BookCoverImageUrlUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    bookId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BookCoverImageUrlCreateManyInput = {
+    id?: string
+    url?: string
+    bookId: string
+  }
+
+  export type BookCoverImageUrlUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BookCoverImageUrlUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    bookId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BooksCreateInput = {
+    id?: string
+    book_title: string
+    book_description: string
+    book_price: Decimal | DecimalJsLike | number | string
+    book_publish_date: Date | string
+    book_language: string
+    book_publisher?: string | null
+    book_pages?: string | null
+    book_rating?: number | null
+    book_category: $Enums.Category
+    book_author_name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    book_cover_image_url?: BookCoverImageUrlCreateNestedOneWithoutBookInput
+    user: UserCreateNestedOneWithoutBooksInput
+  }
+
+  export type BooksUncheckedCreateInput = {
+    id?: string
+    userId: string
+    book_title: string
+    book_description: string
+    book_price: Decimal | DecimalJsLike | number | string
+    book_publish_date: Date | string
+    book_language: string
+    book_publisher?: string | null
+    book_pages?: string | null
+    book_rating?: number | null
+    book_category: $Enums.Category
+    book_author_name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    book_cover_image_url?: BookCoverImageUrlUncheckedCreateNestedOneWithoutBookInput
+  }
+
+  export type BooksUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    book_title?: StringFieldUpdateOperationsInput | string
+    book_description?: StringFieldUpdateOperationsInput | string
+    book_price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    book_publish_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    book_language?: StringFieldUpdateOperationsInput | string
+    book_publisher?: NullableStringFieldUpdateOperationsInput | string | null
+    book_pages?: NullableStringFieldUpdateOperationsInput | string | null
+    book_rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    book_category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
+    book_author_name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    book_cover_image_url?: BookCoverImageUrlUpdateOneWithoutBookNestedInput
+    user?: UserUpdateOneRequiredWithoutBooksNestedInput
+  }
+
+  export type BooksUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    book_title?: StringFieldUpdateOperationsInput | string
+    book_description?: StringFieldUpdateOperationsInput | string
+    book_price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    book_publish_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    book_language?: StringFieldUpdateOperationsInput | string
+    book_publisher?: NullableStringFieldUpdateOperationsInput | string | null
+    book_pages?: NullableStringFieldUpdateOperationsInput | string | null
+    book_rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    book_category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
+    book_author_name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    book_cover_image_url?: BookCoverImageUrlUncheckedUpdateOneWithoutBookNestedInput
+  }
+
+  export type BooksCreateManyInput = {
+    id?: string
+    userId: string
+    book_title: string
+    book_description: string
+    book_price: Decimal | DecimalJsLike | number | string
+    book_publish_date: Date | string
+    book_language: string
+    book_publisher?: string | null
+    book_pages?: string | null
+    book_rating?: number | null
+    book_category: $Enums.Category
+    book_author_name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BooksUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    book_title?: StringFieldUpdateOperationsInput | string
+    book_description?: StringFieldUpdateOperationsInput | string
+    book_price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    book_publish_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    book_language?: StringFieldUpdateOperationsInput | string
+    book_publisher?: NullableStringFieldUpdateOperationsInput | string | null
+    book_pages?: NullableStringFieldUpdateOperationsInput | string | null
+    book_rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    book_category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
+    book_author_name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BooksUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    book_title?: StringFieldUpdateOperationsInput | string
+    book_description?: StringFieldUpdateOperationsInput | string
+    book_price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    book_publish_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    book_language?: StringFieldUpdateOperationsInput | string
+    book_publisher?: NullableStringFieldUpdateOperationsInput | string | null
+    book_pages?: NullableStringFieldUpdateOperationsInput | string | null
+    book_rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    book_category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
+    book_author_name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3764,9 +6688,19 @@ export namespace Prisma {
     isNot?: AvatarWhereInput | null
   }
 
+  export type BooksListRelationFilter = {
+    every?: BooksWhereInput
+    some?: BooksWhereInput
+    none?: BooksWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type BooksOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type UserCountOrderByAggregateInput = {
@@ -3870,6 +6804,166 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type BooksScalarRelationFilter = {
+    is?: BooksWhereInput
+    isNot?: BooksWhereInput
+  }
+
+  export type BookCoverImageUrlCountOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    bookId?: SortOrder
+  }
+
+  export type BookCoverImageUrlMaxOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    bookId?: SortOrder
+  }
+
+  export type BookCoverImageUrlMinOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    bookId?: SortOrder
+  }
+
+  export type DecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type EnumCategoryFilter<$PrismaModel = never> = {
+    equals?: $Enums.Category | EnumCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.Category[] | ListEnumCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Category[] | ListEnumCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumCategoryFilter<$PrismaModel> | $Enums.Category
+  }
+
+  export type BookCoverImageUrlNullableScalarRelationFilter = {
+    is?: BookCoverImageUrlWhereInput | null
+    isNot?: BookCoverImageUrlWhereInput | null
+  }
+
+  export type BooksCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    book_title?: SortOrder
+    book_description?: SortOrder
+    book_price?: SortOrder
+    book_publish_date?: SortOrder
+    book_language?: SortOrder
+    book_publisher?: SortOrder
+    book_pages?: SortOrder
+    book_rating?: SortOrder
+    book_category?: SortOrder
+    book_author_name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BooksAvgOrderByAggregateInput = {
+    book_price?: SortOrder
+    book_rating?: SortOrder
+  }
+
+  export type BooksMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    book_title?: SortOrder
+    book_description?: SortOrder
+    book_price?: SortOrder
+    book_publish_date?: SortOrder
+    book_language?: SortOrder
+    book_publisher?: SortOrder
+    book_pages?: SortOrder
+    book_rating?: SortOrder
+    book_category?: SortOrder
+    book_author_name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BooksMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    book_title?: SortOrder
+    book_description?: SortOrder
+    book_price?: SortOrder
+    book_publish_date?: SortOrder
+    book_language?: SortOrder
+    book_publisher?: SortOrder
+    book_pages?: SortOrder
+    book_rating?: SortOrder
+    book_category?: SortOrder
+    book_author_name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BooksSumOrderByAggregateInput = {
+    book_price?: SortOrder
+    book_rating?: SortOrder
+  }
+
+  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type EnumCategoryWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Category | EnumCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.Category[] | ListEnumCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Category[] | ListEnumCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumCategoryWithAggregatesFilter<$PrismaModel> | $Enums.Category
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCategoryFilter<$PrismaModel>
+    _max?: NestedEnumCategoryFilter<$PrismaModel>
+  }
+
   export type UserCreateNestedOneWithoutAvatarInput = {
     create?: XOR<UserCreateWithoutAvatarInput, UserUncheckedCreateWithoutAvatarInput>
     connectOrCreate?: UserCreateOrConnectWithoutAvatarInput
@@ -3894,10 +6988,24 @@ export namespace Prisma {
     connect?: AvatarWhereUniqueInput
   }
 
+  export type BooksCreateNestedManyWithoutUserInput = {
+    create?: XOR<BooksCreateWithoutUserInput, BooksUncheckedCreateWithoutUserInput> | BooksCreateWithoutUserInput[] | BooksUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BooksCreateOrConnectWithoutUserInput | BooksCreateOrConnectWithoutUserInput[]
+    createMany?: BooksCreateManyUserInputEnvelope
+    connect?: BooksWhereUniqueInput | BooksWhereUniqueInput[]
+  }
+
   export type AvatarUncheckedCreateNestedOneWithoutUserInput = {
     create?: XOR<AvatarCreateWithoutUserInput, AvatarUncheckedCreateWithoutUserInput>
     connectOrCreate?: AvatarCreateOrConnectWithoutUserInput
     connect?: AvatarWhereUniqueInput
+  }
+
+  export type BooksUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<BooksCreateWithoutUserInput, BooksUncheckedCreateWithoutUserInput> | BooksCreateWithoutUserInput[] | BooksUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BooksCreateOrConnectWithoutUserInput | BooksCreateOrConnectWithoutUserInput[]
+    createMany?: BooksCreateManyUserInputEnvelope
+    connect?: BooksWhereUniqueInput | BooksWhereUniqueInput[]
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -3926,6 +7034,20 @@ export namespace Prisma {
     update?: XOR<XOR<AvatarUpdateToOneWithWhereWithoutUserInput, AvatarUpdateWithoutUserInput>, AvatarUncheckedUpdateWithoutUserInput>
   }
 
+  export type BooksUpdateManyWithoutUserNestedInput = {
+    create?: XOR<BooksCreateWithoutUserInput, BooksUncheckedCreateWithoutUserInput> | BooksCreateWithoutUserInput[] | BooksUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BooksCreateOrConnectWithoutUserInput | BooksCreateOrConnectWithoutUserInput[]
+    upsert?: BooksUpsertWithWhereUniqueWithoutUserInput | BooksUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: BooksCreateManyUserInputEnvelope
+    set?: BooksWhereUniqueInput | BooksWhereUniqueInput[]
+    disconnect?: BooksWhereUniqueInput | BooksWhereUniqueInput[]
+    delete?: BooksWhereUniqueInput | BooksWhereUniqueInput[]
+    connect?: BooksWhereUniqueInput | BooksWhereUniqueInput[]
+    update?: BooksUpdateWithWhereUniqueWithoutUserInput | BooksUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: BooksUpdateManyWithWhereWithoutUserInput | BooksUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: BooksScalarWhereInput | BooksScalarWhereInput[]
+  }
+
   export type AvatarUncheckedUpdateOneWithoutUserNestedInput = {
     create?: XOR<AvatarCreateWithoutUserInput, AvatarUncheckedCreateWithoutUserInput>
     connectOrCreate?: AvatarCreateOrConnectWithoutUserInput
@@ -3934,6 +7056,100 @@ export namespace Prisma {
     delete?: AvatarWhereInput | boolean
     connect?: AvatarWhereUniqueInput
     update?: XOR<XOR<AvatarUpdateToOneWithWhereWithoutUserInput, AvatarUpdateWithoutUserInput>, AvatarUncheckedUpdateWithoutUserInput>
+  }
+
+  export type BooksUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<BooksCreateWithoutUserInput, BooksUncheckedCreateWithoutUserInput> | BooksCreateWithoutUserInput[] | BooksUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BooksCreateOrConnectWithoutUserInput | BooksCreateOrConnectWithoutUserInput[]
+    upsert?: BooksUpsertWithWhereUniqueWithoutUserInput | BooksUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: BooksCreateManyUserInputEnvelope
+    set?: BooksWhereUniqueInput | BooksWhereUniqueInput[]
+    disconnect?: BooksWhereUniqueInput | BooksWhereUniqueInput[]
+    delete?: BooksWhereUniqueInput | BooksWhereUniqueInput[]
+    connect?: BooksWhereUniqueInput | BooksWhereUniqueInput[]
+    update?: BooksUpdateWithWhereUniqueWithoutUserInput | BooksUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: BooksUpdateManyWithWhereWithoutUserInput | BooksUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: BooksScalarWhereInput | BooksScalarWhereInput[]
+  }
+
+  export type BooksCreateNestedOneWithoutBook_cover_image_urlInput = {
+    create?: XOR<BooksCreateWithoutBook_cover_image_urlInput, BooksUncheckedCreateWithoutBook_cover_image_urlInput>
+    connectOrCreate?: BooksCreateOrConnectWithoutBook_cover_image_urlInput
+    connect?: BooksWhereUniqueInput
+  }
+
+  export type BooksUpdateOneRequiredWithoutBook_cover_image_urlNestedInput = {
+    create?: XOR<BooksCreateWithoutBook_cover_image_urlInput, BooksUncheckedCreateWithoutBook_cover_image_urlInput>
+    connectOrCreate?: BooksCreateOrConnectWithoutBook_cover_image_urlInput
+    upsert?: BooksUpsertWithoutBook_cover_image_urlInput
+    connect?: BooksWhereUniqueInput
+    update?: XOR<XOR<BooksUpdateToOneWithWhereWithoutBook_cover_image_urlInput, BooksUpdateWithoutBook_cover_image_urlInput>, BooksUncheckedUpdateWithoutBook_cover_image_urlInput>
+  }
+
+  export type BookCoverImageUrlCreateNestedOneWithoutBookInput = {
+    create?: XOR<BookCoverImageUrlCreateWithoutBookInput, BookCoverImageUrlUncheckedCreateWithoutBookInput>
+    connectOrCreate?: BookCoverImageUrlCreateOrConnectWithoutBookInput
+    connect?: BookCoverImageUrlWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutBooksInput = {
+    create?: XOR<UserCreateWithoutBooksInput, UserUncheckedCreateWithoutBooksInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBooksInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type BookCoverImageUrlUncheckedCreateNestedOneWithoutBookInput = {
+    create?: XOR<BookCoverImageUrlCreateWithoutBookInput, BookCoverImageUrlUncheckedCreateWithoutBookInput>
+    connectOrCreate?: BookCoverImageUrlCreateOrConnectWithoutBookInput
+    connect?: BookCoverImageUrlWhereUniqueInput
+  }
+
+  export type DecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type EnumCategoryFieldUpdateOperationsInput = {
+    set?: $Enums.Category
+  }
+
+  export type BookCoverImageUrlUpdateOneWithoutBookNestedInput = {
+    create?: XOR<BookCoverImageUrlCreateWithoutBookInput, BookCoverImageUrlUncheckedCreateWithoutBookInput>
+    connectOrCreate?: BookCoverImageUrlCreateOrConnectWithoutBookInput
+    upsert?: BookCoverImageUrlUpsertWithoutBookInput
+    disconnect?: BookCoverImageUrlWhereInput | boolean
+    delete?: BookCoverImageUrlWhereInput | boolean
+    connect?: BookCoverImageUrlWhereUniqueInput
+    update?: XOR<XOR<BookCoverImageUrlUpdateToOneWithWhereWithoutBookInput, BookCoverImageUrlUpdateWithoutBookInput>, BookCoverImageUrlUncheckedUpdateWithoutBookInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutBooksNestedInput = {
+    create?: XOR<UserCreateWithoutBooksInput, UserUncheckedCreateWithoutBooksInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBooksInput
+    upsert?: UserUpsertWithoutBooksInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBooksInput, UserUpdateWithoutBooksInput>, UserUncheckedUpdateWithoutBooksInput>
+  }
+
+  export type BookCoverImageUrlUncheckedUpdateOneWithoutBookNestedInput = {
+    create?: XOR<BookCoverImageUrlCreateWithoutBookInput, BookCoverImageUrlUncheckedCreateWithoutBookInput>
+    connectOrCreate?: BookCoverImageUrlCreateOrConnectWithoutBookInput
+    upsert?: BookCoverImageUrlUpsertWithoutBookInput
+    disconnect?: BookCoverImageUrlWhereInput | boolean
+    delete?: BookCoverImageUrlWhereInput | boolean
+    connect?: BookCoverImageUrlWhereUniqueInput
+    update?: XOR<XOR<BookCoverImageUrlUpdateToOneWithWhereWithoutBookInput, BookCoverImageUrlUpdateWithoutBookInput>, BookCoverImageUrlUncheckedUpdateWithoutBookInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -4075,6 +7291,77 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedDecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedEnumCategoryFilter<$PrismaModel = never> = {
+    equals?: $Enums.Category | EnumCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.Category[] | ListEnumCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Category[] | ListEnumCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumCategoryFilter<$PrismaModel> | $Enums.Category
+  }
+
+  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumCategoryWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Category | EnumCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.Category[] | ListEnumCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Category[] | ListEnumCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumCategoryWithAggregatesFilter<$PrismaModel> | $Enums.Category
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCategoryFilter<$PrismaModel>
+    _max?: NestedEnumCategoryFilter<$PrismaModel>
+  }
+
   export type UserCreateWithoutAvatarInput = {
     id?: string
     username?: string
@@ -4090,6 +7377,7 @@ export namespace Prisma {
     refreshToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    books?: BooksCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAvatarInput = {
@@ -4107,6 +7395,7 @@ export namespace Prisma {
     refreshToken?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    books?: BooksUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAvatarInput = {
@@ -4140,6 +7429,7 @@ export namespace Prisma {
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    books?: BooksUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAvatarInput = {
@@ -4157,6 +7447,7 @@ export namespace Prisma {
     refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    books?: BooksUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type AvatarCreateWithoutUserInput = {
@@ -4174,6 +7465,50 @@ export namespace Prisma {
   export type AvatarCreateOrConnectWithoutUserInput = {
     where: AvatarWhereUniqueInput
     create: XOR<AvatarCreateWithoutUserInput, AvatarUncheckedCreateWithoutUserInput>
+  }
+
+  export type BooksCreateWithoutUserInput = {
+    id?: string
+    book_title: string
+    book_description: string
+    book_price: Decimal | DecimalJsLike | number | string
+    book_publish_date: Date | string
+    book_language: string
+    book_publisher?: string | null
+    book_pages?: string | null
+    book_rating?: number | null
+    book_category: $Enums.Category
+    book_author_name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    book_cover_image_url?: BookCoverImageUrlCreateNestedOneWithoutBookInput
+  }
+
+  export type BooksUncheckedCreateWithoutUserInput = {
+    id?: string
+    book_title: string
+    book_description: string
+    book_price: Decimal | DecimalJsLike | number | string
+    book_publish_date: Date | string
+    book_language: string
+    book_publisher?: string | null
+    book_pages?: string | null
+    book_rating?: number | null
+    book_category: $Enums.Category
+    book_author_name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    book_cover_image_url?: BookCoverImageUrlUncheckedCreateNestedOneWithoutBookInput
+  }
+
+  export type BooksCreateOrConnectWithoutUserInput = {
+    where: BooksWhereUniqueInput
+    create: XOR<BooksCreateWithoutUserInput, BooksUncheckedCreateWithoutUserInput>
+  }
+
+  export type BooksCreateManyUserInputEnvelope = {
+    data: BooksCreateManyUserInput | BooksCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type AvatarUpsertWithoutUserInput = {
@@ -4197,6 +7532,316 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     localPath?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BooksUpsertWithWhereUniqueWithoutUserInput = {
+    where: BooksWhereUniqueInput
+    update: XOR<BooksUpdateWithoutUserInput, BooksUncheckedUpdateWithoutUserInput>
+    create: XOR<BooksCreateWithoutUserInput, BooksUncheckedCreateWithoutUserInput>
+  }
+
+  export type BooksUpdateWithWhereUniqueWithoutUserInput = {
+    where: BooksWhereUniqueInput
+    data: XOR<BooksUpdateWithoutUserInput, BooksUncheckedUpdateWithoutUserInput>
+  }
+
+  export type BooksUpdateManyWithWhereWithoutUserInput = {
+    where: BooksScalarWhereInput
+    data: XOR<BooksUpdateManyMutationInput, BooksUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type BooksScalarWhereInput = {
+    AND?: BooksScalarWhereInput | BooksScalarWhereInput[]
+    OR?: BooksScalarWhereInput[]
+    NOT?: BooksScalarWhereInput | BooksScalarWhereInput[]
+    id?: StringFilter<"Books"> | string
+    userId?: StringFilter<"Books"> | string
+    book_title?: StringFilter<"Books"> | string
+    book_description?: StringFilter<"Books"> | string
+    book_price?: DecimalFilter<"Books"> | Decimal | DecimalJsLike | number | string
+    book_publish_date?: DateTimeFilter<"Books"> | Date | string
+    book_language?: StringFilter<"Books"> | string
+    book_publisher?: StringNullableFilter<"Books"> | string | null
+    book_pages?: StringNullableFilter<"Books"> | string | null
+    book_rating?: FloatNullableFilter<"Books"> | number | null
+    book_category?: EnumCategoryFilter<"Books"> | $Enums.Category
+    book_author_name?: StringFilter<"Books"> | string
+    createdAt?: DateTimeFilter<"Books"> | Date | string
+    updatedAt?: DateTimeFilter<"Books"> | Date | string
+  }
+
+  export type BooksCreateWithoutBook_cover_image_urlInput = {
+    id?: string
+    book_title: string
+    book_description: string
+    book_price: Decimal | DecimalJsLike | number | string
+    book_publish_date: Date | string
+    book_language: string
+    book_publisher?: string | null
+    book_pages?: string | null
+    book_rating?: number | null
+    book_category: $Enums.Category
+    book_author_name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutBooksInput
+  }
+
+  export type BooksUncheckedCreateWithoutBook_cover_image_urlInput = {
+    id?: string
+    userId: string
+    book_title: string
+    book_description: string
+    book_price: Decimal | DecimalJsLike | number | string
+    book_publish_date: Date | string
+    book_language: string
+    book_publisher?: string | null
+    book_pages?: string | null
+    book_rating?: number | null
+    book_category: $Enums.Category
+    book_author_name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BooksCreateOrConnectWithoutBook_cover_image_urlInput = {
+    where: BooksWhereUniqueInput
+    create: XOR<BooksCreateWithoutBook_cover_image_urlInput, BooksUncheckedCreateWithoutBook_cover_image_urlInput>
+  }
+
+  export type BooksUpsertWithoutBook_cover_image_urlInput = {
+    update: XOR<BooksUpdateWithoutBook_cover_image_urlInput, BooksUncheckedUpdateWithoutBook_cover_image_urlInput>
+    create: XOR<BooksCreateWithoutBook_cover_image_urlInput, BooksUncheckedCreateWithoutBook_cover_image_urlInput>
+    where?: BooksWhereInput
+  }
+
+  export type BooksUpdateToOneWithWhereWithoutBook_cover_image_urlInput = {
+    where?: BooksWhereInput
+    data: XOR<BooksUpdateWithoutBook_cover_image_urlInput, BooksUncheckedUpdateWithoutBook_cover_image_urlInput>
+  }
+
+  export type BooksUpdateWithoutBook_cover_image_urlInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    book_title?: StringFieldUpdateOperationsInput | string
+    book_description?: StringFieldUpdateOperationsInput | string
+    book_price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    book_publish_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    book_language?: StringFieldUpdateOperationsInput | string
+    book_publisher?: NullableStringFieldUpdateOperationsInput | string | null
+    book_pages?: NullableStringFieldUpdateOperationsInput | string | null
+    book_rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    book_category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
+    book_author_name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutBooksNestedInput
+  }
+
+  export type BooksUncheckedUpdateWithoutBook_cover_image_urlInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    book_title?: StringFieldUpdateOperationsInput | string
+    book_description?: StringFieldUpdateOperationsInput | string
+    book_price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    book_publish_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    book_language?: StringFieldUpdateOperationsInput | string
+    book_publisher?: NullableStringFieldUpdateOperationsInput | string | null
+    book_pages?: NullableStringFieldUpdateOperationsInput | string | null
+    book_rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    book_category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
+    book_author_name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BookCoverImageUrlCreateWithoutBookInput = {
+    id?: string
+    url?: string
+  }
+
+  export type BookCoverImageUrlUncheckedCreateWithoutBookInput = {
+    id?: string
+    url?: string
+  }
+
+  export type BookCoverImageUrlCreateOrConnectWithoutBookInput = {
+    where: BookCoverImageUrlWhereUniqueInput
+    create: XOR<BookCoverImageUrlCreateWithoutBookInput, BookCoverImageUrlUncheckedCreateWithoutBookInput>
+  }
+
+  export type UserCreateWithoutBooksInput = {
+    id?: string
+    username?: string
+    fullName?: string
+    email: string
+    password: string
+    isEmailVerified?: boolean
+    role?: $Enums.Role
+    emailVerificationToken?: string | null
+    resendEmailVerificationUrl?: string | null
+    forgetVerificationToken?: string | null
+    resendForgetVerificationUrl?: string | null
+    refreshToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    avatar?: AvatarCreateNestedOneWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutBooksInput = {
+    id?: string
+    username?: string
+    fullName?: string
+    email: string
+    password: string
+    isEmailVerified?: boolean
+    role?: $Enums.Role
+    emailVerificationToken?: string | null
+    resendEmailVerificationUrl?: string | null
+    forgetVerificationToken?: string | null
+    resendForgetVerificationUrl?: string | null
+    refreshToken?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    avatar?: AvatarUncheckedCreateNestedOneWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutBooksInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutBooksInput, UserUncheckedCreateWithoutBooksInput>
+  }
+
+  export type BookCoverImageUrlUpsertWithoutBookInput = {
+    update: XOR<BookCoverImageUrlUpdateWithoutBookInput, BookCoverImageUrlUncheckedUpdateWithoutBookInput>
+    create: XOR<BookCoverImageUrlCreateWithoutBookInput, BookCoverImageUrlUncheckedCreateWithoutBookInput>
+    where?: BookCoverImageUrlWhereInput
+  }
+
+  export type BookCoverImageUrlUpdateToOneWithWhereWithoutBookInput = {
+    where?: BookCoverImageUrlWhereInput
+    data: XOR<BookCoverImageUrlUpdateWithoutBookInput, BookCoverImageUrlUncheckedUpdateWithoutBookInput>
+  }
+
+  export type BookCoverImageUrlUpdateWithoutBookInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BookCoverImageUrlUncheckedUpdateWithoutBookInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserUpsertWithoutBooksInput = {
+    update: XOR<UserUpdateWithoutBooksInput, UserUncheckedUpdateWithoutBooksInput>
+    create: XOR<UserCreateWithoutBooksInput, UserUncheckedCreateWithoutBooksInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutBooksInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutBooksInput, UserUncheckedUpdateWithoutBooksInput>
+  }
+
+  export type UserUpdateWithoutBooksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    emailVerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resendEmailVerificationUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    forgetVerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resendForgetVerificationUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    avatar?: AvatarUpdateOneWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutBooksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    isEmailVerified?: BoolFieldUpdateOperationsInput | boolean
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    emailVerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resendEmailVerificationUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    forgetVerificationToken?: NullableStringFieldUpdateOperationsInput | string | null
+    resendForgetVerificationUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    avatar?: AvatarUncheckedUpdateOneWithoutUserNestedInput
+  }
+
+  export type BooksCreateManyUserInput = {
+    id?: string
+    book_title: string
+    book_description: string
+    book_price: Decimal | DecimalJsLike | number | string
+    book_publish_date: Date | string
+    book_language: string
+    book_publisher?: string | null
+    book_pages?: string | null
+    book_rating?: number | null
+    book_category: $Enums.Category
+    book_author_name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BooksUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    book_title?: StringFieldUpdateOperationsInput | string
+    book_description?: StringFieldUpdateOperationsInput | string
+    book_price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    book_publish_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    book_language?: StringFieldUpdateOperationsInput | string
+    book_publisher?: NullableStringFieldUpdateOperationsInput | string | null
+    book_pages?: NullableStringFieldUpdateOperationsInput | string | null
+    book_rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    book_category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
+    book_author_name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    book_cover_image_url?: BookCoverImageUrlUpdateOneWithoutBookNestedInput
+  }
+
+  export type BooksUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    book_title?: StringFieldUpdateOperationsInput | string
+    book_description?: StringFieldUpdateOperationsInput | string
+    book_price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    book_publish_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    book_language?: StringFieldUpdateOperationsInput | string
+    book_publisher?: NullableStringFieldUpdateOperationsInput | string | null
+    book_pages?: NullableStringFieldUpdateOperationsInput | string | null
+    book_rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    book_category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
+    book_author_name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    book_cover_image_url?: BookCoverImageUrlUncheckedUpdateOneWithoutBookNestedInput
+  }
+
+  export type BooksUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    book_title?: StringFieldUpdateOperationsInput | string
+    book_description?: StringFieldUpdateOperationsInput | string
+    book_price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    book_publish_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    book_language?: StringFieldUpdateOperationsInput | string
+    book_publisher?: NullableStringFieldUpdateOperationsInput | string | null
+    book_pages?: NullableStringFieldUpdateOperationsInput | string | null
+    book_rating?: NullableFloatFieldUpdateOperationsInput | number | null
+    book_category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
+    book_author_name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
