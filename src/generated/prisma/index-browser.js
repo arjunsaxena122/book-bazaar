@@ -150,7 +150,7 @@ exports.Prisma.BookCoverImageUrlScalarFieldEnum = {
   bookId: 'bookId'
 };
 
-exports.Prisma.BooksScalarFieldEnum = {
+exports.Prisma.BookScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   book_title: 'book_title',
@@ -206,7 +206,7 @@ exports.Prisma.ModelName = {
   Avatar: 'Avatar',
   User: 'User',
   BookCoverImageUrl: 'BookCoverImageUrl',
-  Books: 'Books'
+  Book: 'Book'
 };
 
 /**

@@ -3,7 +3,7 @@ import { ApiError } from "../utils";
 import { IRequestUser } from "../types/auth.type";
 import prisma from "../db/db";
 
-export const roleBasedAccessControl = (roles: string[] = []) => async (req: IRequestUser, res: Response, next: NextFunction) => {
+const roleBasedAccessControl = (roles: string[] = []) => async (req: IRequestUser, res: Response, next: NextFunction) => {
     try {
 
         if (!req.user || !req.user.id) {
@@ -34,3 +34,5 @@ export const roleBasedAccessControl = (roles: string[] = []) => async (req: IReq
         ))
     }
 }
+
+export default roleBasedAccessControl

@@ -53,17 +53,17 @@ model User {
   createdAt                   DateTime @default(now())
   updatedAt                   DateTime @updatedAt
   avatar                      Avatar?
-  books                       Books[]
+  book                        Book[]
 }
 
 model BookCoverImageUrl {
   id     String @id @default(cuid())
   url    String @default("")
   bookId String @unique
-  book   Books  @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  book   Book   @relation(fields: [bookId], references: [id], onDelete: Cascade)
 }
 
-model Books {
+model Book {
   id                   String             @id @default(cuid())
   userId               String
   book_title           String             @unique
