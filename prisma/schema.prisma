@@ -54,6 +54,7 @@ model User {
   updatedAt                   DateTime @updatedAt
   avatar                      Avatar?
   book                        Book[]
+  review                      Review[]
 }
 
 model BookCoverImageUrl {
@@ -80,4 +81,18 @@ model Book {
   updatedAt            DateTime           @updatedAt
   book_cover_image_url BookCoverImageUrl?
   user                 User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  review               Review[]
+}
+
+model Review {
+  id          String @id @default(cuid())
+  bookId      String
+  userId      String
+  book_review String @unique
+  book        Book   @relation(fields: [bookId], references: [id])
+  user        User   @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([bookId, userId])
 }
