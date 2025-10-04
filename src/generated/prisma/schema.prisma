@@ -29,6 +29,11 @@ enum Category {
   BUSINESS
 }
 
+enum Payment_Method {
+  COD // Cash on Delivery
+  POD // Pay on Delivery
+}
+
 model Avatar {
   id        String @id @default(cuid())
   url       String @default("https://placehold.co/600x400")
@@ -55,6 +60,7 @@ model User {
   avatar                      Avatar?
   book                        Book[]
   review                      Review[]
+  order                       Order[]
 }
 
 model BookCoverImageUrl {
@@ -82,6 +88,7 @@ model Book {
   book_cover_image_url BookCoverImageUrl?
   user                 User               @relation(fields: [userId], references: [id], onDelete: Cascade)
   review               Review[]
+  Order_Item           Order_Item[]
 }
 
 model Review {
@@ -89,10 +96,38 @@ model Review {
   bookId      String
   userId      String
   book_review String   @unique
-  book        Book     @relation(fields: [bookId], references: [id])
-  user        User     @relation(fields: [userId], references: [id])
+  book        Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
   @@unique([bookId, userId])
+}
+
+model Order {
+  id                 String         @id @default(cuid())
+  ship_to            String
+  payment_method     Payment_Method @default(POD)
+  total_amount       Decimal        @db.Decimal(10, 2)
+  grand_total_amount Decimal        @db.Decimal(10, 2)
+  userId             String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  order_item Order_Item[]
+  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Order_Item {
+  id            String   @id @default(cuid())
+  orderId       String
+  bookId        String
+  book_quantity Int      @default(1)
+  book_price    Decimal  @db.Decimal(10, 2)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  book  Book  @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
 }

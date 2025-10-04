@@ -176,6 +176,27 @@ exports.Prisma.ReviewScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.OrderScalarFieldEnum = {
+  id: 'id',
+  ship_to: 'ship_to',
+  payment_method: 'payment_method',
+  total_amount: 'total_amount',
+  grand_total_amount: 'grand_total_amount',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Order_ItemScalarFieldEnum = {
+  id: 'id',
+  orderId: 'orderId',
+  bookId: 'bookId',
+  book_quantity: 'book_quantity',
+  book_price: 'book_price',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -211,12 +232,19 @@ exports.Category = exports.$Enums.Category = {
   BUSINESS: 'BUSINESS'
 };
 
+exports.Payment_Method = exports.$Enums.Payment_Method = {
+  COD: 'COD',
+  POD: 'POD'
+};
+
 exports.Prisma.ModelName = {
   Avatar: 'Avatar',
   User: 'User',
   BookCoverImageUrl: 'BookCoverImageUrl',
   Book: 'Book',
-  Review: 'Review'
+  Review: 'Review',
+  Order: 'Order',
+  Order_Item: 'Order_Item'
 };
 
 /**
